@@ -1,9 +1,15 @@
 plugins {
     id("java")
+    id("application")
+
 }
 
 group = "com.diogocp27.hero"
 version = "1.0-SNAPSHOT"
+
+application {
+    mainClass.set("Application")
+}
 
 repositories {
     mavenCentral()
