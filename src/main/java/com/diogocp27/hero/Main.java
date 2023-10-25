@@ -4,16 +4,22 @@ package com.diogocp27.hero;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        try {
+            TerminalSize terminalSize = new TerminalSize(40, 20);
+            DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
+                    .setInitialTerminalSize(terminalSize);
+            Terminal terminal = terminalFactory.createTerminal();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+            Terminal terminal = new
+                    DefaultTerminalFactory().createTerminal();
+            Screen screen = new TerminalScreen(terminal);
+            screen.setCursorPosition(null); // we don't need a cursor
+            screen.startScreen(); // screens must be started
+            screen.doResizeIfNecessary(); // resize screen if
+            necessary
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
